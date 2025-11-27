@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Kavya ❤️</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #4a0c1c;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 700px;
+        background: rgba(255, 255, 255, 0.45);
+        padding: 30px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        animation: fadeIn 2s ease;
+        position: relative;
+        z-index: 10;
+    }
+
+    h1 {
+        font-family: "Dancing Script", cursive;
+        font-size: 3.8rem;
+        color: #b31245;
+        margin-bottom: 15px;
+        animation: fadeDown 2s ease;
+    }
+
+    #quote {
+        font-size: 1.5rem;
+        min-height: 50px;
+        line-height: 1.6;
+        animation: fadeUp 2s ease;
+    }
+
+    .proposal {
+        margin-top: 25px;
+        font-size: 2rem;
+        font-weight: 600;
+        color: #8d0e2b;
+        animation: popIn 2.5s ease;
+    }
+
+    /* Floating Hearts */
+    .hearts {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .heart {
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        background: #ff4d6d;
+        transform: rotate(45deg);
+        animation: floatUp 7s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        background: #ff4d6d;
+        border-radius: 50%;
+    }
+    .heart::before { top: -9px; left: 0; }
+    .heart::after { left: -9px; top: 0; }
+
+    /* Animations */
+    @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+    @keyframes fadeDown { from {opacity:0; transform: translateY(-20px);} to {opacity:1; transform: translateY(0);} }
+    @keyframes fadeUp { from {opacity:0; transform: translateY(20px);} to {opacity:1; transform: translateY(0);} }
+    @keyframes popIn { from {opacity:0; transform: scale(0.7);} to {opacity:1; transform: scale(1);} }
+    @keyframes floatUp {
+        0% { transform: translateY(100vh) rotate(45deg); opacity: 0; }
+        15% { opacity: 1; }
+        100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<div class="container">
+    <h1>For Kavya ❤️</h1>
+    <div id="quote"></div>
+
+    <div class="proposal">
+        Kavya…  
+        <br>  
+        <span style="font-size:2.2rem; color:#b31245;">Will you be mine forever? ❤️</span>
+    </div>
+</div>
+
+<script>
+    /* Powerful Quotes */
+    const quotes = [
+        "“Your presence feels like peace I never knew I needed.”",
+        "“In you, I found the reason to believe in love again.”",
+        "“Some people shine without trying… and you’re one of them.”",
+        "“Your smile has a silent magic that fixes everything.”",
+        "“Every heartbeat whispers your name, Kavya.”"
+    ];
+
+    let index = 0;
+    const quoteEl = document.getElementById("quote");
+
+    function typeQuote() {
+        quoteEl.style.opacity = 0;
+        setTimeout(() => {
+            quoteEl.innerHTML = quotes[index];
+            quoteEl.style.opacity = 1;
+        }, 300);
+        index = (index + 1) % quotes.length;
+    }
+
+    typeQuote();
+    setInterval(typeQuote, 3000);
+
+    /* Floating Hearts */
+    function makeHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = 5 + Math.random() * 5 + "s";
+        document.getElementById("hearts").appendChild(heart);
+        setTimeout(() => heart.remove(), 8000);
+    }
+
+    setInterval(makeHeart, 300);
+</script>
+
+</body>
+</html>
